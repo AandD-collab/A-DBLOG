@@ -40,6 +40,7 @@
                 <li><a href="#photos">Photos</a></li>
                 <li><a href="#videos">Videos</a></li>
                 <li><a href="#places">Places</a></li>
+                <li><a href="#bucketlist">Bucket List</a></li>
                 <li><a href="#meals">Meals</a></li> 
             </ul>
         </nav>
@@ -119,6 +120,115 @@
     <p>From cityscapes to serene getaways, each place holds a special meaning in our hearts. Travel with us through these stories.</p>
 </article>
 
+<!-- New Bucket List Article -->
+<article id="bucketlist">
+    <h2 class="major">Bucket List</h2>
+    <p>Our dreams and adventures we wish to accomplish together.</p>
+    <ul id="bucket-list">
+        <li><input type="checkbox"> <strong>Enjoy life together</strong></li>
+        <li><input type="checkbox"> <strong>Get married 💍 (note: dress needs to have pockets)</strong></li>
+        <li><input type="checkbox"> <strong>Visit Scotland 🏴</strong></li>
+        <li><input type="checkbox"> <strong>Go to Jurassic Park</strong></li>
+        <li><input type="checkbox"> <strong>Scuba Diving / Snorkel</strong></li>
+        <li><input type="checkbox"> <strong>Trip to Maldives</strong></li>
+        <li><input type="checkbox"> <strong>Hot-air Ballooning</strong></li>
+        <li><input type="checkbox"> <strong>Watch Northern Lights</strong></li>
+        <li><input type="checkbox"> <strong>Surf</strong></li>
+        <li><input type="checkbox"> <strong>Boat Fishing</strong></li>
+        <li><input type="checkbox"> <strong>Canoe</strong></li>
+        <li><input type="checkbox"> <strong>SkyDiving</strong></li>
+        <li><input type="checkbox"> <strong>Stargazing</strong></li>
+        <li><input type="checkbox"> <strong>Skinny dip</strong></li>
+        <li><input type="checkbox"> <strong>Horseback riding</strong></li>
+        <li><input type="checkbox"> <strong>Cruise ship</strong></li>
+        <li><input type="checkbox"> <strong>Ride across the country</strong></li>
+        <li><input type="checkbox"> <strong>Attend Classical Music Concert</strong></li>
+        <li><input type="checkbox"> <strong>Get matching tattoos</strong></li>
+        <li><input type="checkbox"> <strong>ATV ride</strong></li>
+        <li><input type="checkbox"> <strong>Bungee Jumping</strong></li>
+        <li><input type="checkbox"> <strong>Paragliding</strong></li>
+        <li><input type="checkbox"> <strong>Go to Greece</strong></li>
+        <li><input type="checkbox"> <strong>Baking</strong></li>
+        <li><input type="checkbox"> <strong>Japan 4k walk</strong></li>
+        <li><input type="checkbox"> <strong>Make table and chairs</strong></li>
+        <li><input type="checkbox"> <strong>Camping</strong></li>
+        <li><input type="checkbox"> <strong>Ice skating</strong></li>
+        <li><input type="checkbox"> <strong>Sex bed</strong></li>
+        <li><input type="checkbox"> <strong>Make a garden</strong></li>
+        <li><input type="checkbox"> <strong>Cook food from said garden</strong></li>
+        <li><input type="checkbox"> <strong>Karaoke</strong></li>
+        <li><input type="checkbox"> <strong>Picnic</strong></li>
+        <li><input type="checkbox"> <strong>Make up session</strong></li>
+        <li><input type="checkbox"> <strong>Couple PC setup</strong></li>
+        <li><input type="checkbox"> <strong>Go to Alaska</strong></li>
+        <li><input type="checkbox"> <strong>Go to Boracay</strong></li>
+        <li><input type="checkbox"> <strong>Visit museum</strong></li>
+        <li><input type="checkbox"> <strong>Water Rafting</strong></li>
+        <li><input type="checkbox" checked>Marathon Run ✅</li>
+        <li><input type="checkbox"> <strong>Create cover song incorporating nature</strong></li>
+        <li><input type="checkbox"> <strong>Go to Camiguin</strong></li>
+        <li><input type="checkbox"> <strong>Go Canoeing</strong></li>
+        <li><input type="checkbox"> <strong>Go to Claveria</strong></li>
+        <li><input type="checkbox"> <strong>Trail Run</strong></li>
+        <li><input type="checkbox" checked>Mountain Hiking ✅</li>
+        <li><input type="checkbox"> <strong>Run 10km</strong></li>
+        <li><input type="checkbox" checked>Visit Tinago Falls ✅</li>
+        <li><input type="checkbox"> <strong>Visit Lawis</strong></li>
+        <li><input type="checkbox"> <strong>Visit Mimbalot Falls</strong></li>
+        <li><input type="checkbox"> <strong>Visit Hindang Falls</strong></li>
+        <li><input type="checkbox"> <strong>Visit Dodiongan Falls</strong></li>
+        <li><input type="checkbox"> <strong>Visit Ma. Cristina Falls</strong></li>
+        <li><input type="checkbox"> <strong>Visit Pampam Falls</strong></li>
+        <li><input type="checkbox"> <strong>Visit Sikyop</strong></li>
+        <li><input type="checkbox"> <strong>Visit Tilapas</strong></li>
+        <li><input type="checkbox"> <strong>Visit waterpark</strong></li>
+
+    </ul>
+</article>
+
+<style>
+    #bucket-list li input:checked + strong {
+        color: gray;
+        text-decoration: line-through;
+    }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const checkboxes = document.querySelectorAll("#bucket-list input[type='checkbox']");
+
+        checkboxes.forEach((checkbox, index) => {
+            // Load saved state from localStorage
+            const isChecked = localStorage.getItem(`bucketlist-${index}`) === "true";
+            checkbox.checked = isChecked;
+
+            // Apply styles on page load
+            updateTextStyle(checkbox);
+
+            // Listen for changes
+            checkbox.addEventListener("change", function () {
+                localStorage.setItem(`bucketlist-${index}`, checkbox.checked);
+                updateTextStyle(checkbox);
+            });
+        });
+
+        function updateTextStyle(checkbox) {
+            const textElement = checkbox.nextElementSibling;
+            if (textElement) {
+                if (checkbox.checked) {
+                    textElement.style.color = "gray";
+                    textElement.style.textDecoration = "line-through";
+                } else {
+                    textElement.style.color = "";
+                    textElement.style.textDecoration = "none";
+                }
+            }
+        }
+    });
+</script>
+
+
+
 <!-- Meals -->
 <article id="meals">
     <h2 class="major">Meals</h2>
@@ -144,6 +254,7 @@
 <script src="assets/js/main.js"></script>
 <script src="assets/js/login.js"></script>
 <script src="assets/js/particles.js"></script>
+<script src="assets/js/checklist.js"></script>
 
 
 

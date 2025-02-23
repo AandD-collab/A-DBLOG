@@ -305,6 +305,15 @@
 
 			});
 
+			// Disable Right-Click
+document.addEventListener("contextmenu", (event) => event.preventDefault());
+
+// Disable Text Selection
+document.addEventListener("selectstart", (event) => event.preventDefault());
+
+// Disable Dragging (for images and text)
+document.addEventListener("dragstart", (event) => event.preventDefault());
+
 		// Events.
 			$body.on('click', function(event) {
 

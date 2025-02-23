@@ -52,30 +52,6 @@
 			}).triggerHandler('resize.flexbox-fix');
 
 		}
-// spark mouse effect
-
-document.addEventListener("DOMContentLoaded", function() {
-    const sparkContainer = document.createElement("div");
-    sparkContainer.classList.add("spark-container");
-    document.body.appendChild(sparkContainer);
-
-    document.addEventListener("mousemove", function(e) {
-        createSpark(e.clientX, e.clientY);
-    });
-
-    function createSpark(x, y) {
-        const spark = document.createElement("div");
-        spark.classList.add("spark");
-        spark.style.left = `${x}px`;
-        spark.style.top = `${y}px`;
-
-        sparkContainer.appendChild(spark);
-
-        setTimeout(() => {
-            spark.remove();
-        }, 500);
-    }
-});
 	// Nav.
 		var $nav = $header.children('nav'),
 			$nav_li = $nav.find('li');

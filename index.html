@@ -103,7 +103,42 @@
             <span class="image main"><img src="images/pic01.jpg" alt="" /></span>
             <p>Welcome to our journey!</p>
         </article>
-    </div>
+    <!-- Photos -->
+<article id="photos">
+    <h2 class="major">Photos</h2>
+    <p>Captured moments of our journey, frozen in time. Every photo tells a story, a memory we cherish together.</p>
+    <span class="image main"><img src="imagesofus/us.jpg" alt="Angelo and Darlie" /></span>
+</article>
+
+<!-- Videos -->
+<article id="videos">
+    <h2 class="major">Videos</h2>
+    <p>Relive our adventures through moving frames. From laughter to quiet moments, every video is a piece of us.</p>
+
+    <!-- Embedded Local Video -->
+    <video width="100%" height="auto" controls>
+        <source src="videosofus/valentines.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</article>
+
+
+<!-- Places -->
+<article id="places">
+    <h2 class="major">Places</h2>
+    <span class="image main"><img src="images/pic04.jpg" alt="" /></span>
+    <p>From cityscapes to serene getaways, each place holds a special meaning in our hearts. Travel with us through these stories.</p>
+</article>
+
+<!-- Meals -->
+<article id="meals">
+    <h2 class="major">Meals</h2>
+    <div id="meal-categories"></div> <!-- Container for meal categories -->
+    <p>Food brings people closer, and for us, every meal is a shared experience filled with flavors, love, and laughter.</p>
+</article>
+
+
+</div>
     <footer id="footer">
         <p class="copyright">&copy; A&D</p>
     </footer>
@@ -134,7 +169,7 @@
         const errorMessage = document.getElementById('error-message');
 
         const storedUsername = "ADminDL";
-        const storedHashedPassword = "a66e55acb168b9730869fccf6f5ae86e16c3014e2ae789729f8af39ef8d9e1de"; // Hashed password
+        const storedHashedPassword = "a66e55acb168b9730869fccf6f5ae86e16c3014e2ae789729f8af39ef8d9e1de"; 
 
         const enteredHashedPassword = await hashPassword(password);
 

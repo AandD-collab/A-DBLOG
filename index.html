@@ -8,42 +8,52 @@
     <link rel="stylesheet" href="assets/css/main.css" />
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
     <style>
-        /* Centered Login Form */
+        /* Login Page Styling */
         #login-container {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: #f4f4f4;
-            position: absolute;
             width: 100%;
+            background: url('images/pic01.jpg') no-repeat center center/cover;
+            position: absolute;
             top: 0;
             left: 0;
             z-index: 9999;
         }
         .login-box {
-            background: white;
-            padding: 20px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 30px;
             border-radius: 10px;
+            text-align: center;
+            width: 300px;
+            color: white;
+            box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.2);
+        }
+        .login-box h2 {
+            margin-bottom: 20px;
         }
         .login-box input {
             display: block;
             width: 100%;
             margin: 10px 0;
-            padding: 10px;
-            border: 1px solid #ccc;
+            padding: 12px;
+            border: none;
             border-radius: 5px;
+            font-size: 16px;
         }
         .login-box button {
-            background: #333;
+            background: #ff4b5c;
             color: white;
             border: none;
-            padding: 10px;
+            padding: 12px;
             width: 100%;
             cursor: pointer;
+            font-size: 16px;
             border-radius: 5px;
+        }
+        .login-box button:hover {
+            background: #e73c50;
         }
         .error {
             color: red;
@@ -67,8 +77,6 @@
 
 <!-- Wrapper (Hidden Until Login) -->
 <div id="wrapper" style="display: none;">
-
-    <!-- Header -->
     <header id="header">
         <div class="logo">
             <span class="icon fa-heart"></span>
@@ -89,48 +97,16 @@
             </ul>
         </nav>
     </header>
-
-    <!-- Main -->
     <div id="main">
-
-        <!-- Intro -->
         <article id="intro">
             <h2 class="major">Intro</h2>
             <span class="image main"><img src="images/pic01.jpg" alt="" /></span>
             <p>Welcome to our journey!</p>
         </article>
-
-        <!-- Photos -->
-        <article id="photos">
-            <h2 class="major">Photos</h2>
-            <span class="image main"><img src="images/pic02.jpg" alt="" /></span>
-        </article>
-
-        <!-- Videos -->
-        <article id="videos">
-            <h2 class="major">Videos</h2>
-            <span class="image main"><img src="images/pic03.jpg" alt="" /></span>
-        </article>
-
-        <!-- Places -->
-        <article id="places">
-            <h2 class="major">Places</h2>
-            <span class="image main"><img src="images/pic04.jpg" alt="" /></span>
-        </article>
-
-        <!-- Meals -->
-        <article id="meals">
-            <h2 class="major">Meals</h2>
-            <div id="meal-categories"></div>
-        </article>
-
     </div>
-
-    <!-- Footer -->
     <footer id="footer">
         <p class="copyright">&copy; A&D</p>
     </footer>
-
 </div>
 
 <!-- BG -->
@@ -158,7 +134,6 @@
         }
     }
 
-    // Auto-login if already authenticated
     if (localStorage.getItem('isLoggedIn') === 'true') {
         document.getElementById('login-container').style.display = 'none';
         document.getElementById('wrapper').style.display = 'block';

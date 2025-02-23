@@ -71,6 +71,60 @@ input, select, textarea {
 	-ms-appearance: none;
 	appearance: none;
 }
+/* STYLE * / 
+
+  /* Login Page Styling */
+  #login-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	width: 100%;
+	background: url('images/pic01.jpg') no-repeat center center/cover;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 9999;
+}
+.login-box {
+	background: rgba(0, 0, 0, 0.8);
+	padding: 30px;
+	border-radius: 10px;
+	text-align: center;
+	width: 300px;
+	color: white;
+	box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.2);
+}
+.login-box h2 {
+	margin-bottom: 20px;
+}
+.login-box input {
+	display: block;
+	width: 100%;
+	margin: 10px 0;
+	padding: 12px;
+	border: none;
+	border-radius: 5px;
+	font-size: 16px;
+}
+.login-box button {
+	background: #ff4b5c;
+	color: white;
+	border: none;
+	padding: 12px;
+	width: 100%;
+	cursor: pointer;
+	font-size: 16px;
+	border-radius: 5px;
+}
+.login-box button:hover {
+	background: #e73c50;
+}
+.error {
+	color: red;
+	font-size: 14px;
+	margin-top: 10px;
+}
 
 /* Basic */
 
@@ -1140,9 +1194,12 @@ input, select, textarea {
 			-ms-transition-delay: 0.75s;
 			transition-delay: 0.75s;
 			background-image: linear-gradient(to top, rgba(19, 21, 25, 0.5), rgba(19, 21, 25, 0.5)), url("../../images/overlay.png");
-			background-size: auto, 256px 256px;
-			background-position: center, center;
-			background-repeat: no-repeat, repeat;
+			background-size: auto,
+ 256px 256px;
+			background-position: center,
+ center;
+			background-repeat: no-repeat,
+ repeat;
 			z-index: 2;
 		}
 

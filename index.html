@@ -4,14 +4,69 @@
     <title>A & D BLOG</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <link rel="icon" type="assets/png" href="assets/webfonts/favicon.png">
+    <link rel="icon" type="image/png" href="assets/webfonts/favicon.png">
     <link rel="stylesheet" href="assets/css/main.css" />
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    <style>
+        /* Centered Login Form */
+        #login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #f4f4f4;
+            position: absolute;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 9999;
+        }
+        .login-box {
+            background: white;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            border-radius: 10px;
+        }
+        .login-box input {
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .login-box button {
+            background: #333;
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body class="is-preload">
 
-<!-- Wrapper -->
-<div id="wrapper">
+<!-- Login Screen -->
+<div id="login-container">
+    <div class="login-box">
+        <h2>Login</h2>
+        <input type="text" id="username" placeholder="Username">
+        <input type="password" id="password" placeholder="Password">
+        <button onclick="checkLogin()">Login</button>
+        <p id="error-message" class="error"></p>
+    </div>
+</div>
+
+<!-- Wrapper (Hidden Until Login) -->
+<div id="wrapper" style="display: none;">
 
     <!-- Header -->
     <header id="header">
@@ -30,7 +85,7 @@
                 <li><a href="#photos">Photos</a></li>
                 <li><a href="#videos">Videos</a></li>
                 <li><a href="#places">Places</a></li>
-                <li><a href="#meals">Meals</a></li> <!-- New Meals Link -->
+                <li><a href="#meals">Meals</a></li> 
             </ul>
         </nav>
     </header>
@@ -42,35 +97,31 @@
         <article id="intro">
             <h2 class="major">Intro</h2>
             <span class="image main"><img src="images/pic01.jpg" alt="" /></span>
-            <p>Aenean ornare velit lacus, ac varius enim ullamcorper eu. Proin aliquam facilisis ante interdum congue. Integer mollis, nisl amet convallis, porttitor magna ullamcorper, amet egestas mauris. Ut magna finibus nisi nec lacinia. Nam maximus erat id euismod egestas. By the way, check out my <a href="#photos">awesome photos</a>.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique libero eu nibh porttitor fermentum. Nullam venenatis erat id vehicula viverra. Nunc ultrices eros ut ultricies condimentum. Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non lorem sit amet elit placerat maximus. Pellentesque aliquam maximus risus, vel sed vehicula.</p>
+            <p>Welcome to our journey!</p>
         </article>
 
         <!-- Photos -->
         <article id="photos">
             <h2 class="major">Photos</h2>
             <span class="image main"><img src="images/pic02.jpg" alt="" /></span>
-            <p>Aenean ornare velit lacus, ac varius enim ullamcorper eu. Proin aliquam facilisis ante interdum congue. Integer mollis, nisl amet convallis, porttitor magna ullamcorper, amet egestas mauris. Ut magna finibus nisi nec lacinia. Nam maximus erat id euismod egestas.</p>
         </article>
 
         <!-- Videos -->
         <article id="videos">
             <h2 class="major">Videos</h2>
             <span class="image main"><img src="images/pic03.jpg" alt="" /></span>
-            <p>Aenean ornare velit lacus, ac varius enim ullamcorper eu. Proin aliquam facilisis ante interdum congue. Integer mollis, nisl amet convallis, porttitor magna ullamcorper, amet egestas mauris. Ut magna finibus nisi nec lacinia. Nam maximus erat id euismod egestas.</p>
         </article>
 
         <!-- Places -->
         <article id="places">
             <h2 class="major">Places</h2>
             <span class="image main"><img src="images/pic04.jpg" alt="" /></span>
-            <p>Aenean ornare velit lacus, ac varius enim ullamcorper eu. Proin aliquam facilisis ante interdum congue. Integer mollis, nisl amet convallis, porttitor magna ullamcorper, amet egestas mauris. Ut magna finibus nisi nec lacinia. Nam maximus erat id euismod egestas.</p>
         </article>
 
         <!-- Meals -->
         <article id="meals">
             <h2 class="major">Meals</h2>
-            <div id="meal-categories"></div> <!-- Container for meal categories -->
+            <div id="meal-categories"></div>
         </article>
 
     </div>
@@ -93,24 +144,25 @@
 <script src="assets/js/main.js"></script>
 
 <script>
-    // Fetch meal categories from the API
-    fetch('https://www.themealdb.com/api/json/v1/1/categories.php')
-        .then(response => response.json())
-        .then(data => {
-            const mealCategories = data.categories;
-            const mealContainer = document.getElementById('meal-categories');
-            mealCategories.forEach(meal => {
-                const mealDiv = document.createElement('div');
-                mealDiv.classList.add('meal-category');
-                mealDiv.innerHTML = `
-                    <h3>${meal.strCategory}</h3>
-                    <img src="${meal.strCategoryThumb}" alt="${meal.strCategory}" />
-                    <p>${meal.strCategoryDescription}</p>
-                `;
-                mealContainer.appendChild(mealDiv);
-            });
-        })
-        .catch(error => console.error('Error fetching meal categories:', error));
+    function checkLogin() {
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        const errorMessage = document.getElementById('error-message');
+
+        if (username === "ADminDL" && password === "baby@*1018") {
+            document.getElementById('login-container').style.display = 'none';
+            document.getElementById('wrapper').style.display = 'block';
+            localStorage.setItem('isLoggedIn', 'true');
+        } else {
+            errorMessage.textContent = "Invalid username or password!";
+        }
+    }
+
+    // Auto-login if already authenticated
+    if (localStorage.getItem('isLoggedIn') === 'true') {
+        document.getElementById('login-container').style.display = 'none';
+        document.getElementById('wrapper').style.display = 'block';
+    }
 </script>
 
 </body>
